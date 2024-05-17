@@ -17,7 +17,7 @@ import os
 from scipy.stats import zscore
 
 os.environ["MAPBOX_KEY"]="pk.eyJ1IjoiZmNhc3RhMTgiLCJhIjoiY2x2ZnlrbnIxMHEybzJpbjE4ZXh0Z3hxbyJ9.DfHnFoLH40bOJoImJs001Q"
-rest=pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\CS230\\Streamlit\\Rest_Areas.xlsx")
+rest=pd.read_excel("Rest_Areas.xlsx")
 
 page=st.sidebar.selectbox("Choose a page", ["Home", "Find Nearest Rest Stop", "Find the Best Option For You", "Must Have Services? Filter Rest Stops Here", "Rest Stop Location Maps", "Cool Analytics"])
 
