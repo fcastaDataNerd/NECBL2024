@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import pandas as pd
 import streamlit as st
 
@@ -651,7 +650,6 @@ elif page=="Bunting":
     
      
     
-=======
 import pandas as pd
 import streamlit as st
 
@@ -1304,5 +1302,4 @@ elif page=="Bunting":
     
      
     
->>>>>>> c18f568489fd59d19fb59ccbe5d2e82787ad92b1
 #"C:\Users\Franco Castagliuolo\AppData\Local\Microsoft\WindowsApps\python.exe" -m streamlit run "C:\Users\Franco Castagliuolo\\eclipse-workspace\Baseball\StealingBunting.py
