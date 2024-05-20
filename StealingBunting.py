@@ -188,17 +188,17 @@ elif page == "Stealing (1 Run)":
             recommendation = 'Tilt Steal'
         elif lean_minY <= steal_percentage <= lean_maxY:
             recommendation = 'Lean Steal'
-        elif likely_minY <= steal_percentage <= likely maxY:
+        elif likely_minY <= steal_percentage <= likely_maxY:
             recommendation = 'Likely Steal'
         elif steal_percentage > likely maxY:
             recommendation = 'Safe Steal'
-        elif tilt_minN >= steal_percentage >= tilt maxN:
+        elif tilt_minN >= steal_percentage >= tilt_maxN:
             recommendation = "Tilt Stay"
-        elif lean_minN >= steal_percentage >= lean maxN:
+        elif lean_minN >= steal_percentage >= lean_maxN:
             recommendation = "Lean Stay"
-        elif likely_minN >= steal_percentage >= likely maxN:
+        elif likely_minN >= steal_percentage >= likely_maxN:
             recommendation = "Likely Stay"
-        elif steal_percentage < likely maxN:
+        elif steal_percentage < likely_maxN:
             recommendation = "Safe Stay"
         st.header(f"Recommendation: {recommendation}")
         projected = (SB*steal_percentage)+(CS*(1-steal_percentage))
@@ -256,19 +256,19 @@ elif page == "Stealing (2 Runs)":
         likely_maxN = result.iloc[0]['Likely max.1']
         if tilt_minY <= steal_percentage <= tilt_maxY:
             recommendation = 'Tilt Steal'
-        elif lean_minY <= steal_percentage <= lean maxY:
+        elif lean_minY <= steal_percentage <= lean_maxY:
             recommendation = 'Lean Steal'
-        elif likely_minY <= steal_percentage <= likely maxY:
+        elif likely_minY <= steal_percentage <= likely_maxY:
             recommendation = 'Likely Steal'
-        elif steal_percentage > likely maxY:
+        elif steal_percentage > likely_maxY:
             recommendation = 'Safe Steal'
-        elif tilt_minN >= steal_percentage >= tilt maxN:
+        elif tilt_minN >= steal_percentage >= tilt_maxN:
             recommendation = "Tilt Stay"
-        elif lean_minN >= steal_percentage >= lean maxN:
+        elif lean_minN >= steal_percentage >= lean_maxN:
             recommendation = "Lean Stay"
-        elif likely_minN >= steal_percentage >= likely maxN:
+        elif likely_minN >= steal_percentage >= likely_maxN:
             recommendation = "Likely Stay"
-        elif steal_percentage < likely maxN:
+        elif steal_percentage < likely_maxN:
             recommendation = "Safe Stay"
         st.header(f"Recommendation: {recommendation}")
         projected = (SB*steal_percentage)+(CS*(1-steal_percentage))
@@ -324,21 +324,21 @@ elif page == "Stealing (3 Runs)":
         lean_maxN = result.iloc[0]['Lean max.1']
         likely_minN = result.iloc[0]['Likely min.1']
         likely_maxN = result.iloc[0]['Likely max.1']
-        if tilt_minY <= steal_percentage <= tilt maxY:
+        if tilt_minY <= steal_percentage <= tilt_maxY:
             recommendation = 'Tilt Steal'
-        elif lean_minY <= steal_percentage <= lean maxY:
+        elif lean_minY <= steal_percentage <= lean_maxY:
             recommendation = 'Lean Steal'
-        elif likely_minY <= steal_percentage <= likely maxY:
+        elif likely_minY <= steal_percentage <= likely_maxY:
             recommendation = 'Likely Steal'
-        elif steal_percentage > likely maxY:
+        elif steal_percentage > likely_maxY:
             recommendation = 'Safe Steal'
-        elif tilt_minN >= steal_percentage >= tilt maxN:
+        elif tilt_minN >= steal_percentage >= tilt_maxN:
             recommendation = "Tilt Stay"
-        elif lean_minN >= steal_percentage >= lean maxN:
+        elif lean_minN >= steal_percentage >= lean_maxN:
             recommendation = "Lean Stay"
-        elif likely_minN >= steal_percentage >= likely maxN:
+        elif likely_minN >= steal_percentage >= likely_maxN:
             recommendation = "Likely Stay"
-        elif steal_percentage < likely maxN:
+        elif steal_percentage < likely_maxN:
             recommendation = "Safe Stay"
         st.header(f"Recommendation: {recommendation}")
         projected = (SB*steal_percentage)+(CS*(1-steal-percentage))
@@ -425,21 +425,21 @@ elif page == "Bunting":
                 lean maxN = BMAX.iloc[1]['Lean max.1']
                 likely_minN = BMAX.iloc[1]['Likely min.1']
                 likely maxN = BMAX.iloc[1]['Likely max.1']
-                if tilt_minY >= xruns >= tilt maxY:
+                if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
-                elif lean_minY >= xruns >= lean maxY:
+                elif lean_minY >= xruns >= lean_maxY:
                     recommendation = 'Lean Bunt'
-                elif likely_minY >= xruns >= likely maxY:
+                elif likely_minY >= xruns >= likely_maxY:
                     recommendation = 'Likely Bunt'
-                elif xruns < likely maxY:
+                elif xruns < likely_maxY:
                     recommendation = 'Safe Bunt'
-                elif tilt_minN <= xruns <= tilt maxN:
+                elif tilt_minN <= xruns <= tilt_maxN:
                     recommendation = "Tilt no Bunt"
-                elif lean_minN <= xruns <= lean maxN:
+                elif lean_minN <= xruns <= lean_maxN:
                     recommendation = "Lean no Bunt"
-                elif likely_minN <= xruns <= likely maxN:
+                elif likely_minN <= xruns <= likely_maxN:
                     recommendation = "Likely no Bunt"
-                elif xruns > likely maxN:
+                elif xruns > likely_maxN:
                     recommendation = "Safe no Bunt"
                 st.header(f"Recommendation: {recommendation}")
                 st.write(f"Expected change in runs with successful bunt: {round(SAC, 2)} ({round(max, 2)}, {round(min, 2)})")
@@ -470,21 +470,21 @@ elif page == "Bunting":
                 lean maxN = BMAX.iloc[2]['Lean max.1']
                 likely_minN = BMAX.iloc[2]['Likely min.1']
                 likely maxN = BMAX.iloc[2]['Likely max.1']
-                if tilt_minY >= xruns >= tilt maxY:
+                if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
-                elif lean_minY >= xruns >= lean maxY:
+                elif lean_minY >= xruns >= lean_maxY:
                     recommendation = 'Lean Bunt'
-                elif likely_minY >= xruns >= likely maxY:
+                elif likely_minY >= xruns >= likely_maxY:
                     recommendation = 'Likely Bunt'
-                elif xruns < likely maxY:
+                elif xruns < likely_maxY:
                     recommendation = 'Safe Bunt'
-                elif tilt_minN <= xruns <= tilt maxN:
+                elif tilt_minN <= xruns <= tilt_maxN:
                     recommendation = "Tilt no Bunt"
-                elif lean_minN <= xruns <= lean maxN:
+                elif lean_minN <= xruns <= lean_maxN:
                     recommendation = "Lean no Bunt"
-                elif likely_minN <= xruns <= likely maxN:
+                elif likely_minN <= xruns <= likely_maxN:
                     recommendation = "Likely no Bunt"
-                elif xruns > likely maxN:
+                elif xruns > likely_maxN:
                     recommendation = "Safe no Bunt"
                 st.header(f"Recommendation: {recommendation}")
                 st.write(f"Expected change in runs with successful bunt: {round(SAC, 2)} ({round(max, 2)}, {round(min, 2)})")
@@ -518,21 +518,21 @@ elif page == "Bunting":
                 lean maxN = B1.iloc[0]['Lean max.1']
                 likely_minN = B1.iloc[0]['Likely min.1']
                 likely maxN = B1.iloc[0]['Likely max.1']
-                if tilt_minY >= xruns >= tilt maxY:
+                if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
-                elif lean_minY >= xruns >= lean maxY:
+                elif lean_minY >= xruns >= lean_maxY:
                     recommendation = 'Lean Bunt'
-                elif likely_minY >= xruns >= likely maxY:
+                elif likely_minY >= xruns >= likely_maxY:
                     recommendation = 'Likely Bunt'
-                elif xruns < likely maxY:
+                elif xruns < likely_maxY:
                     recommendation = 'Safe Bunt'
-                elif tilt_minN <= xruns <= tilt maxN:
+                elif tilt_minN <= xruns <= tilt_maxN:
                     recommendation = "Tilt no Bunt"
-                elif lean_minN <= xruns <= lean maxN:
+                elif lean_minN <= xruns <= lean_maxN:
                     recommendation = "Lean no Bunt"
-                elif likely_minN <= xruns <= likely maxN:
+                elif likely_minN <= xruns <= likely_maxN:
                     recommendation = "Likely no Bunt"
-                elif xruns > likely maxN:
+                elif xruns > likely_maxN:
                     recommendation = "Safe no Bunt"
                 st.header(f"Recommendation: {recommendation}")
                 st.write(f"Expected change in odds to score at least 1 with successful bunt: {round(SAC*100, 2)}% ({round(max*100, 2)}%, {round(min*100, 2)}%)")
@@ -564,21 +564,21 @@ elif page == "Bunting":
                 lean maxN = B1.iloc[1]['Lean max.1']
                 likely_minN = B1.iloc[1]['Likely min.1']
                 likely maxN = B1.iloc[1]['Likely max.1']
-                if tilt_minY >= xruns >= tilt maxY:
+                if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
-                elif lean_minY >= xruns >= lean maxY:
+                elif lean_minY >= xruns >= lean_maxY:
                     recommendation = 'Lean Bunt'
-                elif likely_minY >= xruns >= likely maxY:
+                elif likely_minY >= xruns >= likely_maxY:
                     recommendation = 'Likely Bunt'
-                elif xruns < likely maxY:
+                elif xruns < likely_maxY:
                     recommendation = 'Safe Bunt'
-                elif tilt_minN <= xruns <= tilt maxN:
+                elif tilt_minN <= xruns <= tilt_maxN:
                     recommendation = "Tilt no Bunt"
-                elif lean_minN <= xruns <= lean maxN:
+                elif lean_minN <= xruns <= lean_maxN:
                     recommendation = "Lean no Bunt"
-                elif likely_minN <= xruns <= likely maxN:
+                elif likely_minN <= xruns <= likely_maxN:
                     recommendation = "Likely no Bunt"
-                elif xruns > likely maxN:
+                elif xruns > likely_maxN:
                     recommendation = "Safe no Bunt"
                 st.header(f"Recommendation: {recommendation}")
                 st.write(f"Expected change in odds to score at least 1 with successful bunt: {round(SAC*100, 2)}% ({round(max*100, 2)}%, {round(min*100, 2)}%)")
@@ -610,21 +610,21 @@ elif page == "Bunting":
                 lean maxN = B1.iloc[2]['Lean max.1']
                 likely_minN = B1.iloc[2]['Likely min.1']
                 likely maxN = B1.iloc[2]['Likely max.1']
-                if tilt_minY >= xruns >= tilt maxY:
+                if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
-                elif lean_minY >= xruns >= lean maxY:
+                elif lean_minY >= xruns >= lean_maxY:
                     recommendation = 'Lean Bunt'
-                elif likely_minY >= xruns >= likely maxY:
+                elif likely_minY >= xruns >= likely_maxY:
                     recommendation = 'Likely Bunt'
-                elif xruns < likely maxY:
+                elif xruns < likely_maxY:
                     recommendation = 'Safe Bunt'
-                elif tilt_minN <= xruns <= tilt maxN:
+                elif tilt_minN <= xruns <= tilt_maxN:
                     recommendation = "Tilt no Bunt"
-                elif lean_minN <= xruns <= lean maxN:
+                elif lean_minN <= xruns <= lean_maxN:
                     recommendation = "Lean no Bunt"
-                elif likely_minN <= xruns <= likely maxN:
+                elif likely_minN <= xruns <= likely_maxN:
                     recommendation = "Likely no Bunt"
-                elif xruns > likely maxN:
+                elif xruns > likely_maxN:
                     recommendation = "Safe no Bunt"
                 st.header(f"Recommendation: {recommendation}")
                 st.write(f"Expected change in odds to score at least 1 with successful bunt: {round(SAC*100, 2)}% ({round(max*100, 2)}%, {round(min*100, 2)}%)")
