@@ -151,10 +151,14 @@ elif page=="Stealing (1 Run)":
     outs = st.number_input("Enter the number of outs:", min_value=0, max_value=2, step=1)
     if '12' in runners:
         location = st.selectbox("Select the location:", ['Double', '3rd'])
+        if location=="Double":
+            base=st.selectbox("Are we focusing on the runner stealing 2nd or 3rd?", ["2nd", "3rd"])   
     else:
         location=None
     runners=int(runners)
     if st.button('Get Steal Information'):
+         if base=="2nd":
+            location="Double (2nd)"
         result = get_steal_data(Z1S, runners, outs, location)
         st.write(f"{selected_player}: {players[selected_player]:.2%}")
         conf = result.iloc[0]['AVG Confidence']
@@ -217,10 +221,14 @@ elif page=="Stealing (2 Runs)":
     outs = st.number_input("Enter the number of outs:", min_value=0, max_value=2, step=1)
     if '12' in runners:
         location = st.selectbox("Select the location:", ['Double', '3rd'])
+        if location=="Double":
+            base=st.selectbox("Are we focusing on the runner stealing 2nd or 3rd?", ["2nd", "3rd"])   
     else:
         location=None
     runners=int(runners)
     if st.button('Get Steal Information'):
+         if base=="2nd":
+            location="Double (2nd)"
         result = get_steal_data(Z2S, runners, outs, location)
         st.write(f"{selected_player}: {players[selected_player]:.2%}")
         conf = result.iloc[0]['AVG Confidence']
@@ -281,12 +289,16 @@ elif page=="Stealing (3 Runs)":
     selected_player = st.selectbox("Select Player", list(players.keys()))
     runners = st.text_input("Enter the runners on base (e.g., '1', '13', '123'):")
     outs = st.number_input("Enter the number of outs:", min_value=0, max_value=2, step=1)
-    if '12' in runners:
+     if '12' in runners:
         location = st.selectbox("Select the location:", ['Double', '3rd'])
+        if location=="Double":
+            base=st.selectbox("Are we focusing on the runner stealing 2nd or 3rd?", ["2nd", "3rd"])   
     else:
         location=None
     runners=int(runners)
     if st.button('Get Steal Information'):
+         if base=="2nd":
+            location="Double (2nd)"
         result = get_steal_data(Z3S, runners, outs, location)
         st.write(f"{selected_player}: {players[selected_player]:.2%}")
         conf = result.iloc[0]['AVG Confidence']
