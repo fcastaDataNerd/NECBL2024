@@ -373,28 +373,28 @@ elif page == "Bunting":
                 lean_minY = BMAX.iloc[0]['Lean min']
                 lean_maxY = BMAX.iloc[0]['Lean max']
                 likely_minY = BMAX.iloc[0]['Likely min']
-                likely maxY = BMAX.iloc[0]['Likely max']
+                likely_maxY = BMAX.iloc[0]['Likely max']
                 tilt_minN = BMAX.iloc[0]['Tilt min.1']
                 tilt maxN = BMAX.iloc[0]['Tilt max.1']
                 lean_minN = BMAX.iloc[0]['Lean min.1']
                 lean maxN = BMAX.iloc[0]['Lean max.1']
                 likely_minN = BMAX.iloc[0]['Likely min.1']
                 likely_maxN = BMAX.iloc[0]['Likely max.1']
-                if tilt_minY >= xruns >= tilt maxY:
+                if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
-                elif lean_minY >= xruns >= lean maxY:
+                elif lean_minY >= xruns >= lean_maxY:
                     recommendation = 'Lean Bunt'
-                elif likely_minY >= xruns >= likely maxY:
+                elif likely_minY >= xruns >= likely_maxY:
                     recommendation = 'Likely Bunt'
-                elif xruns < likely maxY:
+                elif xruns < likely_maxY:
                     recommendation = 'Safe Bunt'
-                elif tilt_minN <= xruns <= tilt maxN:
+                elif tilt_minN <= xruns <= tilt_maxN:
                     recommendation = "Tilt no Bunt"
-                elif lean_minN <= xruns <= lean maxN:
+                elif lean_minN <= xruns <= lean_maxN:
                     recommendation = "Lean no Bunt"
-                elif likely_minN <= xruns <= likely maxN:
+                elif likely_minN <= xruns <= likely_maxN:
                     recommendation = "Likely no Bunt"
-                elif xruns > likely maxN:
+                elif xruns > likely_maxN:
                     recommendation = "Safe no Bunt"
                 st.header(f"Recommendation: {recommendation}")
                 st.write(f"Expected change in runs with successful bunt: {round(SAC, 2)} ({round(max, 2)}, {round(min, 2)})")
@@ -416,15 +416,15 @@ elif page == "Bunting":
                 tilt_minY = BMAX.iloc[1]['Tilt min']
                 tilt_maxY = BMAX.iloc[1]['Tilt max']
                 lean_minY = BMAX.iloc[1]['Lean min']
-                lean maxY = BMAX.iloc[1]['Lean max']
+                lean_maxY = BMAX.iloc[1]['Lean max']
                 likely_minY = BMAX.iloc[1]['Likely min']
                 likely maxY = BMAX.iloc[1]['Likely max']
                 tilt_minN = BMAX.iloc[1]['Tilt min.1']
-                tilt maxN = BMAX.iloc[1]['Tilt max.1']
+                tilt_maxN = BMAX.iloc[1]['Tilt max.1']
                 lean_minN = BMAX.iloc[1]['Lean min.1']
                 lean maxN = BMAX.iloc[1]['Lean max.1']
                 likely_minN = BMAX.iloc[1]['Likely min.1']
-                likely maxN = BMAX.iloc[1]['Likely max.1']
+                likely_maxN = BMAX.iloc[1]['Likely max.1']
                 if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
                 elif lean_minY >= xruns >= lean_maxY:
@@ -465,11 +465,11 @@ elif page == "Bunting":
                 likely_minY = BMAX.iloc[2]['Likely min']
                 likely maxY = BMAX.iloc[2]['Likely max']
                 tilt_minN = BMAX.iloc[2]['Tilt min.1']
-                tilt maxN = BMAX.iloc[2]['Tilt max.1']
+                tilt_maxN = BMAX.iloc[2]['Tilt max.1']
                 lean_minN = BMAX.iloc[2]['Lean min.1']
                 lean maxN = BMAX.iloc[2]['Lean max.1']
                 likely_minN = BMAX.iloc[2]['Likely min.1']
-                likely maxN = BMAX.iloc[2]['Likely max.1']
+                likely_maxN = BMAX.iloc[2]['Likely max.1']
                 if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
                 elif lean_minY >= xruns >= lean_maxY:
@@ -509,15 +509,15 @@ elif page == "Bunting":
                 tilt_minY = B1.iloc[0]['Tilt min']
                 tilt_maxY = B1.iloc[0]['Tilt max']
                 lean_minY = B1.iloc[0]['Lean min']
-                lean maxY = B1.iloc[0]['Lean max']
+                lean_maxY = B1.iloc[0]['Lean max']
                 likely_minY = B1.iloc[0]['Likely min']
-                likely maxY = B1.iloc[0]['Likely max']
+                likely_maxY = B1.iloc[0]['Likely max']
                 tilt_minN = B1.iloc[0]['Tilt min.1']
                 tilt maxN = B1.iloc[0]['Tilt max.1']
                 lean_minN = B1.iloc[0]['Lean min.1']
                 lean maxN = B1.iloc[0]['Lean max.1']
                 likely_minN = B1.iloc[0]['Likely min.1']
-                likely maxN = B1.iloc[0]['Likely max.1']
+                likely_maxN = B1.iloc[0]['Likely max.1']
                 if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
                 elif lean_minY >= xruns >= lean_maxY:
@@ -557,13 +557,13 @@ elif page == "Bunting":
                 lean_minY = B1.iloc[1]['Lean min']
                 lean maxY = B1.iloc[1]['Lean max']
                 likely_minY = B1.iloc[1]['Likely min']
-                likely maxY = B1.iloc[1]['Likely max']
+                likely_maxY = B1.iloc[1]['Likely max']
                 tilt_minN = B1.iloc[1]['Tilt min.1']
                 tilt maxN = B1.iloc[1]['Tilt max.1']
                 lean_minN = B1.iloc[1]['Lean min.1']
-                lean maxN = B1.iloc[1]['Lean max.1']
+                lean_maxN = B1.iloc[1]['Lean max.1']
                 likely_minN = B1.iloc[1]['Likely min.1']
-                likely maxN = B1.iloc[1]['Likely max.1']
+                likely_maxN = B1.iloc[1]['Likely max.1']
                 if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
                 elif lean_minY >= xruns >= lean_maxY:
@@ -603,13 +603,13 @@ elif page == "Bunting":
                 lean_minY = B1.iloc[2]['Lean min']
                 lean maxY = B1.iloc[2]['Lean max']
                 likely_minY = B1.iloc[2]['Likely min']
-                likely maxY = B1.iloc[2]['Likely max']
+                likely_maxY = B1.iloc[2]['Likely max']
                 tilt_minN = B1.iloc[2]['Tilt min.1']
-                tilt maxN = B1.iloc[2]['Tilt max.1']
+                tilt_maxN = B1.iloc[2]['Tilt max.1']
                 lean_minN = B1.iloc[2]['Lean min.1']
                 lean maxN = B1.iloc[2]['Lean max.1']
                 likely_minN = B1.iloc[2]['Likely min.1']
-                likely maxN = B1.iloc[2]['Likely max.1']
+                likely_maxN = B1.iloc[2]['Likely max.1']
                 if tilt_minY >= xruns >= tilt_maxY:
                     recommendation = 'Tilt Bunt'
                 elif lean_minY >= xruns >= lean_maxY:
