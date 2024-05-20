@@ -64,9 +64,13 @@ if page == "Stealing (Max)":
     location = None
     if '12' in runners:
         location = st.selectbox("Select the location:", ['Double', '3rd'])
+        if location=="Double":
+            base=st.selectbox("Are we focusing on the runner stealing 2nd or 3rd?", ["2nd", "3rd"])
     runners=int(runners)
     # Button to fetch and display data
     if st.button('Get Steal Information'):
+        if base=="2nd":
+            location=="Double (2nd)"
         result = get_steal_data(xSteal, runners, outs, location)
         st.write(f"{selected_player}: {players[selected_player]:.2%}")
         conf = result.iloc[0]['AVG Confidence']
