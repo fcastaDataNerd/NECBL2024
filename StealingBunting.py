@@ -190,7 +190,7 @@ elif page == "Stealing (1 Run)":
             recommendation = 'Lean Steal'
         elif likely_minY <= steal_percentage <= likely_maxY:
             recommendation = 'Likely Steal'
-        elif steal_percentage > likely maxY:
+        elif steal_percentage > likely_maxY:
             recommendation = 'Safe Steal'
         elif tilt_minN >= steal_percentage >= tilt_maxN:
             recommendation = "Tilt Stay"
