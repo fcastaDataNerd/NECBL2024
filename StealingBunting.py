@@ -70,7 +70,7 @@ if page == "Stealing (Max)":
     # Button to fetch and display data
     if st.button('Get Steal Information'):
         if base=="2nd":
-            location=="Double (2nd)"
+            location="Double (2nd)"
         result = get_steal_data(xSteal, runners, outs, location)
         st.write(f"{selected_player}: {players[selected_player]:.2%}")
         conf = result.iloc[0]['AVG Confidence']
