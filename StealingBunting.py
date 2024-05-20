@@ -358,7 +358,7 @@ elif page == "Bunting":
     selected_player = st.selectbox("Select Player", list(players.keys()))
     if option == "Historical":
         outs = 0
-        type = st.selectbox("What is the goal?", ["Maximize Runs", "1 Run"])
+        type = st.selectbox("What is the goal?", ["Maximize Runs", "1 Run", "2 Runs"])
         if type == "Maximize Runs":
             runners = st.text_input("Enter the runners on base (1,2,12):")
             runners = int(runners)
@@ -638,3 +638,51 @@ elif page == "Bunting":
                 pivot_table = pivot_table.applymap(lambda x: f"{x:.2f}%")
                 st.subheader("The 1 Run Probability Matrix")
                 st.write(pivot_table)
+        if type=="2 Runs" and selected_player:
+            st.subheader("Note: The only situation where bunting should be considered when trying to score 2 is 12/0")
+            stats = projections[projections['Player'] == selected_player]
+            xruns = stats.iloc[0]["12/0 B2"]
+            SAC = B2.iloc[0]["Sacrifice Value"]
+            max = B2.iloc[0]["Max"]
+            min = B2.iloc[0]["Min"]
+            tilt_minY = B1.iloc[1]['Tilt min']
+            tilt_maxY = B1.iloc[1]['Tilt max']
+            lean_minY = B1.iloc[1]['Lean min']
+            lean_maxY = B1.iloc[1]['Lean max']
+            likely_minY = B1.iloc[1]['Likely min']
+            likely_maxY = B1.iloc[1]['Likely max']
+            tilt_minN = B1.iloc[1]['Tilt min.1']
+            tilt_maxN = B1.iloc[1]['Tilt max.1']
+            lean_minN = B1.iloc[1]['Lean min.1']
+            lean_maxN = B1.iloc[1]['Lean max.1']
+            likely_minN = B1.iloc[1]['Likely min.1']
+            likely_maxN = B1.iloc[1]['Likely max.1']
+            if tilt_minY >= xruns >= tilt_maxY:
+                recommendation = 'Tilt Bunt'
+            elif lean_minY >= xruns >= lean_maxY:
+                recommendation = 'Lean Bunt'
+            elif likely_minY >= xruns >= likely_maxY:
+                recommendation = 'Likely Bunt'
+            elif xruns < likely_maxY:
+                recommendation = 'Safe Bunt'
+            elif tilt_minN <= xruns <= tilt_maxN:
+                recommendation = "Tilt no Bunt"
+            elif lean_minN <= xruns <= lean_maxN:
+                recommendation = "Lean no Bunt"
+            elif likely_minN <= xruns <= likely_maxN:
+                recommendation = "Likely no Bunt"
+            elif xruns > likely_maxN:
+                recommendation = "Safe no Bunt"
+            st.header(f"Recommendation: {recommendation}")
+            st.write(f"Expected change in odds to score at least 2 with successful bunt: {round(SAC*100, 2)}% ({round(max*100, 2)}%, {round(min*100, 2)}%)")
+            st.write(f"Expected change in odds to score at least 2 without bunt: {round(xruns*100, 2)}%")
+            st.write(f"No bunt vs bunt projected difference: {round(xruns*100-SAC*100, 2)}%")
+            pivot_table = pd.pivot_table(WA2S, values='WeightedProb', index='Runners', columns='Outs', aggfunc='first')
+            pivot_table.columns = [f"{int(col)} Outs" for col in pivot_table.columns]
+            pivot_table = pivot_table*100
+            custom_order = [0, 1, 2, 3, 12, 13, 23, 123]
+            pivot_table = pivot_table.reindex(custom_order)
+            pivot_table = pivot_table.applymap(lambda x: f"{x:.2f}%")
+            st.subheader("The 2 Run Probability Matrix")
+            st.write(pivot_table)
+           
