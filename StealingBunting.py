@@ -377,7 +377,7 @@ elif page == "Bunting":
                 tilt_minN = BMAX.iloc[0]['Tilt min.1']
                 tilt_maxN = BMAX.iloc[0]['Tilt max.1']
                 lean_minN = BMAX.iloc[0]['Lean min.1']
-                lean maxN = BMAX.iloc[0]['Lean max.1']
+                lean_maxN = BMAX.iloc[0]['Lean max.1']
                 likely_minN = BMAX.iloc[0]['Likely min.1']
                 likely_maxN = BMAX.iloc[0]['Likely max.1']
                 if tilt_minY >= xruns >= tilt_maxY:
