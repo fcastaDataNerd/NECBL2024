@@ -30,7 +30,7 @@ projections = excel(file, "Projections")
 players = {
     "Lucas Manning": 19 / 20,
     "Casey Bishop": 29 / 32,
-    "William Juan": 5 / 5,
+    "William Jaun": 5 / 5,
     "Max Jensen": 13 / 14,
     "Estevan Moreno": 13 / 15,
     "David Michael Jefferson": 38 / 43,
