@@ -29,8 +29,8 @@ projections = excel(file, "Projections")
 
 players = {
     "Lucas Manning": 21 / 22,
-    "Jake Walman(NA stealing)": 0/0,
-    "Nathan Waugh(NA stealing)": 0/0,
+    "Jake Walman(NA stealing)": 0/1,
+    "Nathan Waugh(NA stealing)": 0/1,
     "Casey Bishop": 29 / 32,
     "William Jaun(small steal sample)": 5 / 5,
     "Max Jensen": 13 / 14,
