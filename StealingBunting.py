@@ -44,7 +44,7 @@ players = {
     "Johnny Luetzow (small steal sample)": 5 / 8,
     "Samuel Angelo": 16 / 19,
     "Braxton Meguiar": 65 / 81,
-    Josean Sanchez: 8 / 10,
+    "Josean Sanchez": 8 / 10,
     "Beau Root": 50/58
     
 }
