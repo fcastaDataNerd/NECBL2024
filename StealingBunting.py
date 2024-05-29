@@ -28,19 +28,25 @@ squeeze = excel(file, "Squeeze")
 projections = excel(file, "Projections")
 
 players = {
-    "Lucas Manning": 19 / 20,
+    "Lucas Manning": 21 / 22,
+    "Jake Walman(NA stealing)": 0/0,
+    "Nathan Waugh(NA stealing)": 0/0,
     "Casey Bishop": 29 / 32,
-    "William Jaun": 5 / 5,
+    "William Jaun(small steal sample)": 5 / 5,
     "Max Jensen": 13 / 14,
     "Estevan Moreno": 13 / 15,
     "David Michael Jefferson": 38 / 43,
-    "Carlos Martinez": 5 / 8,
-    "Nic Notarangelo": 19 / 26,
+    "Carlos Martinez(small steal sample)": 5 / 8,
+    "Nic Notarangelo": 32 / 43,
     "AJ Rausch": 49 / 57,
-    "Cam Santerre": 139 / 154,
+    "Cam Santerre": 142 / 158,
     "Tyler Ganus": 32 / 38,
-    "Johnny Luetzow": 5 / 8,
-    "Samuel Angelo": 9 / 11
+    "Johnny Luetzow (small steal sample)": 5 / 8,
+    "Samuel Angelo": 16 / 19,
+    "Braxton Meguiar": 65 / 81,
+    Josean Sanchez: 8 / 10,
+    "Beau Root": 50/58
+    
 }
 
 def get_steal_data(data, runners, outs, location=None):
