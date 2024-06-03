@@ -28,24 +28,21 @@ squeeze = excel(file, "Squeeze")
 projections = excel(file, "Projections")
 
 players = {
-    "Lucas Manning": 21 / 22,
+    "Lucas Manning": 22 / 23,
     "Jake Walman(NA stealing)": 0/1,
     "Nathan Waugh(NA stealing)": 0/1,
     "Casey Bishop": 29 / 32,
-    "William Jaun(small steal sample)": 5 / 5,
     "Max Jensen": 13 / 14,
-    "Estevan Moreno": 13 / 15,
     "David Michael Jefferson": 38 / 43,
     "Carlos Martinez(small steal sample)": 5 / 8,
-    "Nic Notarangelo": 32 / 43,
-    "AJ Rausch": 49 / 57,
+    "Nic Notarangelo": 32 / 40,
     "Cam Santerre": 142 / 158,
-    "Tyler Ganus": 32 / 38,
     "Johnny Luetzow (small steal sample)": 5 / 8,
     "Samuel Angelo": 16 / 19,
     "Braxton Meguiar": 65 / 81,
     "Josean Sanchez": 8 / 10,
-    "Beau Root": 50/58
+    "Beau Root": 50/58,
+    "Johnny Knox: 38/49
     
 }
 
