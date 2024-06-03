@@ -42,7 +42,7 @@ players = {
     "Braxton Meguiar": 65 / 81,
     "Josean Sanchez": 8 / 10,
     "Beau Root": 50/58,
-    "Johnny Knox: 38/49
+    "Johnny Knox": 38/49
     
 }
 
