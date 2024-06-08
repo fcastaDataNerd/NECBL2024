@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 
 file = "Exports.xlsx"
+@st.cache_data
 
 def excel(file, sheet):
     data = pd.read_excel(file, sheet)
