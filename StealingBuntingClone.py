@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-file = "C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\GitHubPython\\Exports.xlsx"
+file = "Exports.xlsx"
 
 def excel(file, sheet):
     data = pd.read_excel(file, sheet)
