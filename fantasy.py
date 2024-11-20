@@ -60,8 +60,13 @@ for i, matchup in week_12_matchups.iterrows():
         st.session_state.updated_records.loc[st.session_state.updated_records['Team'] == team1, 'PF'] += points1
         st.session_state.updated_records.loc[st.session_state.updated_records['Team'] == team2, 'PF'] += points2
         
+        # Reorder standings: Sort by Wins (descending), then PF (descending)
+        st.session_state.updated_records = st.session_state.updated_records.sort_values(
+            by=["Wins", "PF"], ascending=[False, False]
+        ).reset_index(drop=True)
+        
         st.success(f"Result submitted for {team1} vs. {team2}")
 
 # Display updated records
-st.subheader("Updated Records")
+st.subheader("Updated Standings")
 st.dataframe(st.session_state.updated_records)
