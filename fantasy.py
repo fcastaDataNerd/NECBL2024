@@ -57,17 +57,17 @@ for i, matchup in week12_matchups.iterrows():
                       [team1, team2], key=f"winner_12_{i}")
 
     # Point entry option
-    st.write(f"Projected Points: {team1} - {proj1}, {team2} - {proj2}")
+    st.write(f"Projected Points: {team1} - {proj1:.2f}, {team2} - {proj2:.2f}")
     custom_points = st.checkbox(f"Enter custom points for {team1} vs. {team2}?", key=f"custom_points_12_{i}")
 
     if custom_points:
-        # Custom points input
-        points1 = st.number_input(f"Enter points for {team1}:", min_value=0, key=f"points1_12_{i}")
-        points2 = st.number_input(f"Enter points for {team2}:", min_value=0, key=f"points2_12_{i}")
+        # Custom points input with up to 2 decimal places
+        points1 = st.number_input(f"Enter points for {team1}:", min_value=0.0, format="%.2f", key=f"points1_12_{i}")
+        points2 = st.number_input(f"Enter points for {team2}:", min_value=0.0, format="%.2f", key=f"points2_12_{i}")
     else:
         # Use projected points
-        points1 = proj1
-        points2 = proj2
+        points1 = round(proj1, 2)
+        points2 = round(proj2, 2)
 
     # Finalize prediction
     if st.button(f"Finalize Winner for {team1} vs. {team2}", key=f"finalize_12_{i}"):
@@ -84,4 +84,90 @@ st.session_state.updated_records = st.session_state.updated_records.sort_values(
 st.subheader("Standings After Week 12")
 st.dataframe(st.session_state.updated_records)
 
-# Repeat similar logic for Weeks 13 and 14
+
+# Week 13 Matchups
+st.subheader("Week 13 Matchups")
+week13_matchups = schedule[schedule['Week'] == 13]
+for i, matchup in week13_matchups.iterrows():
+    team1 = matchup['Team1']
+    team2 = matchup['Team2']
+    proj1 = matchup['Team1Proj']
+    proj2 = matchup['Team2Proj']
+
+    st.markdown(f"### {team1} vs. {team2}")
+
+    # Select winner
+    winner = st.radio(f"Select the winner for {team1} vs. {team2}:",
+                      [team1, team2], key=f"winner_13_{i}")
+
+    # Point entry option
+    st.write(f"Projected Points: {team1} - {proj1:.2f}, {team2} - {proj2:.2f}")
+    custom_points = st.checkbox(f"Enter custom points for {team1} vs. {team2}?", key=f"custom_points_13_{i}")
+
+    if custom_points:
+        # Custom points input with up to 2 decimal places
+        points1 = st.number_input(f"Enter points for {team1}:", min_value=0.0, format="%.2f", key=f"points1_13_{i}")
+        points2 = st.number_input(f"Enter points for {team2}:", min_value=0.0, format="%.2f", key=f"points2_13_{i}")
+    else:
+        # Use projected points
+        points1 = round(proj1, 2)
+        points2 = round(proj2, 2)
+
+    # Finalize prediction
+    if st.button(f"Finalize Winner for {team1} vs. {team2}", key=f"finalize_13_{i}"):
+        loser = team2 if winner == team1 else team1
+        winner_points = points1 if winner == team1 else points2
+        loser_points = points2 if winner == team1 else points1
+        update_records(winner, loser, winner_points, loser_points, week_key=f"13_{i}")
+
+# Sort standings after week 13
+st.session_state.updated_records = st.session_state.updated_records.sort_values(
+    by=['Wins', 'PF'], ascending=[False, False]).reset_index(drop=True)
+
+# Display updated standings after Week 13
+st.subheader("Standings After Week 13")
+st.dataframe(st.session_state.updated_records)
+
+
+# Week 14 Matchups
+st.subheader("Week 14 Matchups")
+week14_matchups = schedule[schedule['Week'] == 14]
+for i, matchup in week14_matchups.iterrows():
+    team1 = matchup['Team1']
+    team2 = matchup['Team2']
+    proj1 = matchup['Team1Proj']
+    proj2 = matchup['Team2Proj']
+
+    st.markdown(f"### {team1} vs. {team2}")
+
+    # Select winner
+    winner = st.radio(f"Select the winner for {team1} vs. {team2}:",
+                      [team1, team2], key=f"winner_14_{i}")
+
+    # Point entry option
+    st.write(f"Projected Points: {team1} - {proj1:.2f}, {team2} - {proj2:.2f}")
+    custom_points = st.checkbox(f"Enter custom points for {team1} vs. {team2}?", key=f"custom_points_14_{i}")
+
+    if custom_points:
+        # Custom points input with up to 2 decimal places
+        points1 = st.number_input(f"Enter points for {team1}:", min_value=0.0, format="%.2f", key=f"points1_14_{i}")
+        points2 = st.number_input(f"Enter points for {team2}:", min_value=0.0, format="%.2f", key=f"points2_14_{i}")
+    else:
+        # Use projected points
+        points1 = round(proj1, 2)
+        points2 = round(proj2, 2)
+
+    # Finalize prediction
+    if st.button(f"Finalize Winner for {team1} vs. {team2}", key=f"finalize_14_{i}"):
+        loser = team2 if winner == team1 else team1
+        winner_points = points1 if winner == team1 else points2
+        loser_points = points2 if winner == team1 else points1
+        update_records(winner, loser, winner_points, loser_points, week_key=f"14_{i}")
+
+# Sort standings after week 14
+st.session_state.updated_records = st.session_state.updated_records.sort_values(
+    by=['Wins', 'PF'], ascending=[False, False]).reset_index(drop=True)
+
+# Display updated standings after Week 14
+st.subheader("Final Standings After Week 14")
+st.dataframe(st.session_state.updated_records)
