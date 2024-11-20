@@ -135,7 +135,8 @@ st.session_state.updated_records = st.session_state.updated_records.sort_values(
 # Display updated standings after Week 13
 st.subheader("Standings After Week 13")
 st.dataframe(st.session_state.updated_records)
-
+st.subheader("Mike Sawyer preparing for a voodoo style playoff run")
+st.image("Screenshot (1395).png", use_column_width=True)
 
 # Week 14 Matchups
 st.subheader("Week 14 Matchups")
