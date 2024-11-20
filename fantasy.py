@@ -12,7 +12,7 @@ playoffs = pd.read_excel("Fantasy.xlsx", sheet_name="Playoffs")
 # Streamlit App Title
 st.title("ROS Playoff Scenarios")
 st.header("Greetings, gentlemen. Discover your tanking scenarios below (except for FS)")
-st.image("", caption="Playoff Bracket Visualization", use_column_width=True)
+st.image("Screenshot (1391).png", caption="Playoff Bracket Visualization", use_column_width=True)
 
 
 # Initialize session state for updated records and finalized predictions
