@@ -16,8 +16,6 @@ print()
 st.subheader("I am the worst player in league history and I colluded")
 st.image("Screenshot (1391).png", use_column_width=True)
 print()
-st.subheader("Your face when Max Zornada surges at the end of the year to eliminate you from playoff contention")
-st.image("Screenshot (1393).png", use_column_width=True)
 print()
 
 
@@ -182,4 +180,5 @@ st.session_state.updated_records = st.session_state.updated_records.sort_values(
 st.subheader("Final Standings After Week 14")
 st.dataframe(st.session_state.updated_records)
 
-
+st.subheader("Your face when Max Zornada surges at the end of the year to eliminate you from playoff contention")
+st.image("Screenshot (1393).png", use_column_width=True)
