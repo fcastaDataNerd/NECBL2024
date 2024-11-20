@@ -171,3 +171,37 @@ st.session_state.updated_records = st.session_state.updated_records.sort_values(
 # Display updated standings after Week 14
 st.subheader("Final Standings After Week 14")
 st.dataframe(st.session_state.updated_records)
+
+
+# Generate Playoff Bracket
+st.subheader("Playoff Bracket")
+
+# Get the top 8 teams for playoffs
+playoff_teams = st.session_state.updated_records.iloc[:8].reset_index(drop=True)
+
+# Display seeding
+st.markdown("### Playoff Seeding:")
+for i, team in enumerate(playoff_teams['Team']):
+    st.write(f"Seed {i + 1}: {team}")
+
+# Generate first-round matchups
+first_round_matchups = [
+    (playoff_teams.iloc[0]['Team'], playoff_teams.iloc[7]['Team']),  # 1 vs. 8
+    (playoff_teams.iloc[1]['Team'], playoff_teams.iloc[6]['Team']),  # 2 vs. 7
+    (playoff_teams.iloc[2]['Team'], playoff_teams.iloc[5]['Team']),  # 3 vs. 6
+    (playoff_teams.iloc[3]['Team'], playoff_teams.iloc[4]['Team']),  # 4 vs. 5
+]
+
+# Display first-round matchups
+st.markdown("### First Round Matchups:")
+for matchup in first_round_matchups:
+    st.write(f"{matchup[0]} vs. {matchup[1]}")
+
+# Generate and display the full playoff bracket
+st.markdown("### Full Playoff Bracket:")
+
+# Placeholder for playoff bracket visualization
+for round_name, matchups in [("First Round", first_round_matchups)]:
+    st.markdown(f"#### {round_name}:")
+    for team1, team2 in matchups:
+        st.write(f"{team1} vs. {team2}")
