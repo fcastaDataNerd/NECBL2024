@@ -105,7 +105,8 @@ for i, matchup in week13_matchups.iterrows():
 
         st.session_state.updated_records.loc[st.session_state.updated_records['Team'] == team1, 'PF'] += points1
         st.session_state.updated_records.loc[st.session_state.updated_records['Team'] == team2, 'PF'] += points2
-
+st.subheader("Final Standings After Week 13")
+st.dataframe(st.session_state.updated_records)
 # Week 14 Matchups (Similar code as above)
 st.subheader("Week 14 Matchups")
 week14_matchups = schedule[schedule['Week'] == 14]
