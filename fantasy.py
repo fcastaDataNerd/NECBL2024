@@ -19,8 +19,6 @@ print()
 st.subheader("Your face when Max Zornada surges at the end of the year to eliminate you from playoff contention")
 st.image("Screenshot (1393).png", use_column_width=True)
 print()
-st.subheader("The face of the mouse god one seed")
-st.image("Screenshot (1394).png", use_column_width=True)
 
 
 
@@ -94,7 +92,8 @@ st.session_state.updated_records = st.session_state.updated_records.sort_values(
 # Display updated standings after Week 12
 st.subheader("Standings After Week 12")
 st.dataframe(st.session_state.updated_records)
-
+st.subheader("The face of the mouse god one seed")
+st.image("Screenshot (1394).png", use_column_width=True)
 
 # Week 13 Matchups
 st.subheader("Week 13 Matchups")
