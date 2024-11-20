@@ -14,7 +14,7 @@ st.title("ROS Playoff Scenarios")
 st.header("Greetings, gentlemen. Discover your tanking scenarios below (except for FS)")
 print()
 st.subheader("The worst player in league history")
-st.image("Screenshot (1396).png", use_column_width=True)
+st.image("Screenshot (1397).png", use_column_width=True)
 print()
 print()
 
