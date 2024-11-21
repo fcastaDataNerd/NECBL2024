@@ -189,11 +189,6 @@ st.image("Screenshot (1393).png", use_column_width=True)
 import numpy as np
 import pandas as pd
 pd.set_option('display.max_columns', None)
-# Load data and historical scores
-scores = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="ScoringData")
-records = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Records")
-schedule = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Schedule")
-playoffs = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Playoffs")
 print(records)
 print(scores)
 print(schedule)
@@ -515,7 +510,7 @@ summary_table = simulate_season_10000(schedule, records, playoffs, league_std, n
 # Display the summary table
 
 st.subheader("Current Playoff Estimates")
-print(summary_table)
+st.dataframe(summary_table)
 
 
 
