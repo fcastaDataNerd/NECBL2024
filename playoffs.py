@@ -1,6 +1,11 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
+pd.set_option('display.max_columns', None)
+scores = pd.read_excel("Fantasy.xlsx", sheet_name="ScoringData")
+records = pd.read_excel("Fantasy.xlsx", sheet_name="Records")
+schedule = pd.read_excel("Fantasy.xlsx", sheet_name="Schedule")
+playoffs = pd.read_excel("Fantasy.xlsx", sheet_name="Playoffs")
 def get_playoff_and_toilet_bowl_teams(final_standings):
     """
     Extract playoff and toilet bowl teams from final standings.
