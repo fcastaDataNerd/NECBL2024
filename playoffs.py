@@ -2,10 +2,10 @@ import numpy as np
 import pandas as pd
 pd.set_option('display.max_columns', None)
 # Load data and historical scores
-scores = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="ScoringData")
-records = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Records")
-schedule = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Schedule")
-playoffs = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Playoffs")
+scores = pd.read_excel("Fantasy.xlsx", sheet_name="ScoringData")
+records = pd.read_excel("Fantasy.xlsx", sheet_name="Records")
+schedule = pd.read_excel("Fantasy.xlsx", sheet_name="Schedule")
+playoffs = pd.read_excel("Fantasy.xlsx", sheet_name="Playoffs")
 print(records)
 print(scores)
 print(schedule)
