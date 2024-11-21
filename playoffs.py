@@ -1,11 +1,85 @@
 import numpy as np
 import pandas as pd
-import streamlit as st
 pd.set_option('display.max_columns', None)
-scores = pd.read_excel("Fantasy.xlsx", sheet_name="ScoringData")
-records = pd.read_excel("Fantasy.xlsx", sheet_name="Records")
-schedule = pd.read_excel("Fantasy.xlsx", sheet_name="Schedule")
-playoffs = pd.read_excel("Fantasy.xlsx", sheet_name="Playoffs")
+# Load data and historical scores
+scores = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="ScoringData")
+records = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Records")
+schedule = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Schedule")
+playoffs = pd.read_excel("C:\\Users\\Franco Castagliuolo\\OneDrive - Bentley University\\Fantasy.xlsx", sheet_name="Playoffs")
+print(records)
+print(scores)
+print(schedule)
+
+score_values = scores['Points']  # Replace 'Points' with the actual column name if different
+n_iterations = 1000
+bootstrap_stds = [np.std(np.random.choice(score_values, size=len(score_values), replace=True)) for _ in range(n_iterations)]
+league_std = np.mean(bootstrap_stds)
+
+def simulate_game(projection1, projection2, std_dev):
+    """
+    Simulate a single game given two projections and league-wide standard deviation.
+    
+    Args:
+        projection1 (float): Projected score for team 1.
+        projection2 (float): Projected score for team 2.
+        std_dev (float): League-wide standard deviation for score variability.
+
+    Returns:
+        tuple: Simulated scores for team 1 and team 2.
+    """
+    score1 = np.random.normal(loc=projection1, scale=std_dev)
+    score2 = np.random.normal(loc=projection2, scale=std_dev)
+    return score1, score2
+
+
+def simulate_regular_season(schedule, records, std_dev):
+    """
+    Simulate all games in the regular season (Weeks 12-14) and update records.
+
+    Args:
+        schedule (DataFrame): Weekly matchups with projections.
+        records (DataFrame): Existing records with Wins, Loss, and PF.
+        std_dev (float): League-wide standard deviation for score variability.
+
+    Returns:
+        DataFrame: Sorted standings based on Wins and PF after Weeks 12-14.
+    """
+    # Create a copy of the records to retain the original data
+    updated_records = records.copy()
+
+    # Loop through each game in the schedule
+    for _, game in schedule.iterrows():
+        # Extract team names and projections
+        team1 = game['Team1']
+        team2 = game['Team2']
+        proj1 = game['Team1Proj']
+        proj2 = game['Team2Proj']
+
+        # Simulate the game
+        score1, score2 = simulate_game(proj1, proj2, std_dev)
+
+        # Update Points For (PF)
+        updated_records.loc[updated_records['Team'] == team1, 'PF'] += score1
+        updated_records.loc[updated_records['Team'] == team2, 'PF'] += score2
+
+        # Update Wins and Losses
+        if score1 > score2:
+            updated_records.loc[updated_records['Team'] == team1, 'Wins'] += 1
+            updated_records.loc[updated_records['Team'] == team2, 'Loss'] += 1
+        else:
+            updated_records.loc[updated_records['Team'] == team2, 'Wins'] += 1
+            updated_records.loc[updated_records['Team'] == team1, 'Loss'] += 1
+
+    # Sort the standings by Wins (descending) and PF (descending)
+    updated_records = updated_records.sort_values(by=['Wins', 'PF'], ascending=[False, False]).reset_index(drop=True)
+
+    return updated_records
+# Simulate the regular season (Weeks 12-14) and sort standings
+final_standings = simulate_regular_season(schedule, records, league_std)
+
+# Display the final standings
+print(final_standings)
+
 def get_playoff_and_toilet_bowl_teams(final_standings):
     """
     Extract playoff and toilet bowl teams from final standings.
@@ -252,5 +326,9 @@ summary_table = simulate_season_10000(schedule, records, playoffs, league_std, n
 
 # Display the summary table
 
+# Print the summary table
 st.subheader("Current Playoff Estimates")
 st.dataframe(summary_table)
+
+
+
