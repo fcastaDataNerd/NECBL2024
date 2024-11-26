@@ -47,52 +47,6 @@ def update_records(winner, loser, winner_points, loser_points, week_key):
     # Store the new prediction in session state
     st.session_state.finalized_predictions[week_key] = (winner, loser, winner_points, loser_points)
 
-
-# Week 12 Matchups
-st.subheader("Week 12 Matchups")
-week12_matchups = schedule[schedule['Week'] == 12]
-for i, matchup in week12_matchups.iterrows():
-    team1 = matchup['Team1']
-    team2 = matchup['Team2']
-    proj1 = matchup['Team1Proj']
-    proj2 = matchup['Team2Proj']
-
-    st.markdown(f"### {team1} vs. {team2}")
-
-    # Select winner
-    winner = st.radio(f"Select the winner for {team1} vs. {team2}:",
-                      [team1, team2], key=f"winner_12_{i}")
-
-    # Point entry option
-    st.write(f"Projected Points: {team1} - {proj1:.2f}, {team2} - {proj2:.2f}")
-    custom_points = st.checkbox(f"Enter custom points for {team1} vs. {team2}?", key=f"custom_points_12_{i}")
-
-    if custom_points:
-        # Custom points input with up to 2 decimal places
-        points1 = st.number_input(f"Enter points for {team1}:", min_value=0.0, format="%.2f", key=f"points1_12_{i}")
-        points2 = st.number_input(f"Enter points for {team2}:", min_value=0.0, format="%.2f", key=f"points2_12_{i}")
-    else:
-        # Use projected points
-        points1 = round(proj1, 2)
-        points2 = round(proj2, 2)
-
-    # Finalize prediction
-    if st.button(f"Finalize Winner for {team1} vs. {team2}", key=f"finalize_12_{i}"):
-        loser = team2 if winner == team1 else team1
-        winner_points = points1 if winner == team1 else points2
-        loser_points = points2 if winner == team1 else points1
-        update_records(winner, loser, winner_points, loser_points, week_key=f"12_{i}")
-
-# Sort standings after week 12
-st.session_state.updated_records = st.session_state.updated_records.sort_values(
-    by=['Wins', 'PF'], ascending=[False, False]).reset_index(drop=True)
-
-# Display updated standings after Week 12
-st.subheader("Standings After Week 12")
-st.dataframe(st.session_state.updated_records)
-st.subheader("The face of the mouse god one seed")
-st.image("Screenshot (1394).png", use_column_width=True)
-
 # Week 13 Matchups
 st.subheader("Week 13 Matchups")
 week13_matchups = schedule[schedule['Week'] == 13]
