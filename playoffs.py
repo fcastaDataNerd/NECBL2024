@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import streamlit as st
 
 # Load final standings and playoff projections
 final_standings = pd.read_excel("Fantasy.xlsx", sheet_name="Final")
@@ -196,4 +197,4 @@ n_simulations = 10000
 summary_table = simulate_season(playoff_teams, playoffs, league_std, n_simulations=n_simulations)
 
 # Display the summary table
-print(summary_table)
+st.write(summary_table)
