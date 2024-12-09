@@ -5,6 +5,8 @@ import streamlit as st
 # Load final standings and playoff projections
 final_standings = pd.read_excel("Fantasy.xlsx", sheet_name="Final")
 playoffs = pd.read_excel("Fantasy.xlsx", sheet_name="Playoffs")
+scoring_data = pd.read_excel("Fantasy.xlsx", sheet_name="ScoringData")
+
 
 # Sort final standings by Wins (descending) and PF (descending)
 final_standings = final_standings.sort_values(by=["Wins", "PF"], ascending=[False, False]).reset_index(drop=True)
@@ -154,9 +156,9 @@ def simulate_season(playoff_teams, playoffs, std_dev, n_simulations=10000):
         # Simulate second round
         second_round_matchups = [
             (first_round_winners[0], playoffs.loc[playoffs['Team'] == first_round_winners[0], 'R2'].values[0],
-             first_round_winners[1], playoffs.loc[playoffs['Team'] == first_round_winners[1], 'R2'].values[0]),
-            (first_round_winners[2], playoffs.loc[playoffs['Team'] == first_round_winners[2], 'R2'].values[0],
-             first_round_winners[3], playoffs.loc[playoffs['Team'] == first_round_winners[3], 'R2'].values[0]),
+             first_round_winners[3], playoffs.loc[playoffs['Team'] == first_round_winners[1], 'R2'].values[0]),
+            (first_round_winners[1], playoffs.loc[playoffs['Team'] == first_round_winners[2], 'R2'].values[0],
+             first_round_winners[2], playoffs.loc[playoffs['Team'] == first_round_winners[3], 'R2'].values[0]),
         ]
         second_round_winners, _ = simulate_round(second_round_matchups, std_dev)
         
@@ -187,8 +189,8 @@ def simulate_season(playoff_teams, playoffs, std_dev, n_simulations=10000):
     return pd.DataFrame(summary)
 
 # Define league-wide standard deviation
+score_values = scoring_data['Scores']  # Replace 'Scores' with the actual column name in ScoringData
 n_iterations = 1000
-score_values = playoffs['R1']  # Assuming 'R1' column contains initial projections for teams
 bootstrap_stds = [np.std(np.random.choice(score_values, size=len(score_values), replace=True)) for _ in range(n_iterations)]
 league_std = np.mean(bootstrap_stds)
 
