@@ -181,7 +181,7 @@ def simulate_season(playoff_teams, playoffs, std_dev, n_simulations=10000):
     # Convert stats to percentages
     summary = []
     for team, stats in team_stats.items():
-    summary.append({
+        summary.append({
             "Team": team,
             "Wins League (%)": (stats["Wins League"] / n_simulations) * 100,
             "Advances to R2 (%)": (stats["Advances to R2"] / n_simulations) * 100,
