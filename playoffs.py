@@ -135,7 +135,7 @@ def simulate_season(playoff_teams, playoffs, std_dev, n_simulations=10000):
     for _ in range(n_simulations):
         # Simulate playoffs
         first_round_winners, _ = simulate_playoffs()
-            for _ in range(n_simulations):
+        for _ in range(n_simulations):
         # Simulate playoffs
         first_round_matchups = [
             (playoff_teams.iloc[0]['Team'], playoffs.loc[playoffs['Team'] == playoff_teams.iloc[0]['Team'], 'R1'].values[0],
