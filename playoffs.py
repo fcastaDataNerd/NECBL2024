@@ -114,7 +114,6 @@ def simulate_playoffs(playoff_teams, playoffs_data, std_dev):
 
     return championship_winner[0]  # Return the single winner of the championship
 
-# Track playoff stats over multiple simulations
 def simulate_season(playoff_teams, playoffs, std_dev, n_simulations=10000):
     """
     Simulate the playoffs multiple times and track stats.
@@ -133,11 +132,8 @@ def simulate_season(playoff_teams, playoffs, std_dev, n_simulations=10000):
                          "Advances to R3": 0} for team in playoff_teams['Team']}
     
     for _ in range(n_simulations):
-        # Simulate playoffs
-        first_round_winners, _ = simulate_playoffs()
-        for _ in range(n_simulations):
-        # Simulate playoffs
-            first_round_matchups = [
+        # Simulate first round
+        first_round_matchups = [
             (playoff_teams.iloc[0]['Team'], playoffs.loc[playoffs['Team'] == playoff_teams.iloc[0]['Team'], 'R1'].values[0],
              playoff_teams.iloc[7]['Team'], playoffs.loc[playoffs['Team'] == playoff_teams.iloc[7]['Team'], 'R1'].values[0]),
             (playoff_teams.iloc[1]['Team'], playoffs.loc[playoffs['Team'] == playoff_teams.iloc[1]['Team'], 'R1'].values[0],
@@ -148,7 +144,6 @@ def simulate_season(playoff_teams, playoffs, std_dev, n_simulations=10000):
              playoff_teams.iloc[4]['Team'], playoffs.loc[playoffs['Team'] == playoff_teams.iloc[4]['Team'], 'R1'].values[0]),
         ]
         
-        # Simulate first round
         first_round_winners, _ = simulate_round(first_round_matchups, std_dev)
         
         # Track first round advancements
@@ -202,5 +197,3 @@ summary_table = simulate_season(playoff_teams, playoffs, league_std, n_simulatio
 
 # Display the summary table
 print(summary_table)
-
-
