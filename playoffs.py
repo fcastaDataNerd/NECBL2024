@@ -189,7 +189,7 @@ def simulate_season(playoff_teams, playoffs, std_dev, n_simulations=10000):
     return pd.DataFrame(summary)
 
 # Define league-wide standard deviation
-score_values = scoring_data['Scores']  # Replace 'Scores' with the actual column name in ScoringData
+score_values = scoring_data['ScoringData']  # Replace 'Scores' with the actual column name in ScoringData
 n_iterations = 1000
 bootstrap_stds = [np.std(np.random.choice(score_values, size=len(score_values), replace=True)) for _ in range(n_iterations)]
 league_std = np.mean(bootstrap_stds)
