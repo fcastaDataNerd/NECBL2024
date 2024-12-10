@@ -58,9 +58,9 @@ def simulate_playoffs(playoff_teams, playoffs_data, std_dev):
 
     second_round_matchups = [
         (first_round_winners[0], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[0], 'R2'].values[0],
-         first_round_winners[1], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[1], 'R2'].values[0]),
-        (first_round_winners[2], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[2], 'R2'].values[0],
-         first_round_winners[3], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[3], 'R2'].values[0]),
+         first_round_winners[3], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[1], 'R2'].values[0]),
+        (first_round_winners[1], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[2], 'R2'].values[0],
+         first_round_winners[2], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[3], 'R2'].values[0]),
     ]
     second_round_winners, _ = simulate_round(second_round_matchups, std_dev)
 
