@@ -52,6 +52,10 @@ def simulate_playoffs(playoff_teams, playoffs_data, std_dev):
     ]
     first_round_winners, _ = simulate_round(first_round_matchups, std_dev)
 
+    # Track second-round advancements
+    for team in first_round_winners:
+        team_stats[team]["Advances to R2"] += 1
+
     second_round_matchups = [
         (first_round_winners[0], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[0], 'R2'].values[0],
          first_round_winners[1], playoffs_data.loc[playoffs_data['Team'] == first_round_winners[1], 'R2'].values[0]),
@@ -60,13 +64,18 @@ def simulate_playoffs(playoff_teams, playoffs_data, std_dev):
     ]
     second_round_winners, _ = simulate_round(second_round_matchups, std_dev)
 
+    # Track final-round advancements
+    for team in second_round_winners:
+        team_stats[team]["Advances to R3"] += 1
+
     championship_matchup = [
         (second_round_winners[0], playoffs_data.loc[playoffs_data['Team'] == second_round_winners[0], 'R3'].values[0],
          second_round_winners[1], playoffs_data.loc[playoffs_data['Team'] == second_round_winners[1], 'R3'].values[0]),
     ]
     championship_winner, _ = simulate_round(championship_matchup, std_dev)
 
-    return championship_winner[0]  # Return the single winner of the championship
+    # Track championship win
+    team_stats[championship_winner[0]]["Wins League"] += 1
 
 # Simulate the toilet bowl bracket
 def simulate_toilet_bowl(toilet_bowl_teams, playoffs_data, std_dev):
@@ -85,26 +94,41 @@ def simulate_toilet_bowl(toilet_bowl_teams, playoffs_data, std_dev):
     ]
     _, toilet_bowl_loser = simulate_round(final_matchup, std_dev)
 
-    return toilet_bowl_loser[0]  # Return the loser of the league
+    # Track league loser
+    team_stats[toilet_bowl_loser[0]]["Loses League"] += 1
 
-# Simulate playoffs and toilet bowl
+# Simulate both playoffs and toilet bowl
 def simulate_season(playoff_teams, toilet_bowl_teams, playoffs, std_dev, n_simulations=10000):
-    team_stats = {team: {"Wins League": 0, "Loses League": 0} for team in final_standings['Team']}
+    """
+    Simulate both the playoffs and the toilet bowl, tracking winners and losers.
+
+    Args:
+        playoff_teams (DataFrame): Teams in the playoffs.
+        toilet_bowl_teams (DataFrame): Teams in the toilet bowl.
+        playoffs (DataFrame): Projections for all rounds.
+        std_dev (float): League-wide standard deviation for score variability.
+        n_simulations (int): Number of simulations to run.
+
+    Returns:
+        DataFrame: Summary of playoff and toilet bowl results.
+    """
+    global team_stats
+    team_stats = {team: {"Wins League": 0, "Advances to R2": 0, "Advances to R3": 0, "Loses League": 0} for team in final_standings['Team']}
     
     for _ in range(n_simulations):
         # Simulate playoffs
-        champion = simulate_playoffs(playoff_teams, playoffs, std_dev)
-        team_stats[champion]["Wins League"] += 1
+        simulate_playoffs(playoff_teams, playoffs, std_dev)
 
         # Simulate toilet bowl
-        loser = simulate_toilet_bowl(toilet_bowl_teams, playoffs, std_dev)
-        team_stats[loser]["Loses League"] += 1
+        simulate_toilet_bowl(toilet_bowl_teams, playoffs, std_dev)
 
     # Convert stats to percentages
     summary = []
     for team, stats in team_stats.items():
         summary.append({
             "Team": team,
+            "Advances to R2 (%)": (stats["Advances to R2"] / n_simulations) * 100,
+            "Advances to R3 (%)": (stats["Advances to R3"] / n_simulations) * 100,
             "Wins League (%)": (stats["Wins League"] / n_simulations) * 100,
             "Loses League (%)": (stats["Loses League"] / n_simulations) * 100,
         })
@@ -112,7 +136,7 @@ def simulate_season(playoff_teams, toilet_bowl_teams, playoffs, std_dev, n_simul
     return pd.DataFrame(summary)
 
 # Define league-wide standard deviation
-score_values = scoring_data['Points']  # Replace 'Points' with actual column name in ScoringData
+score_values = scoring_data['Points']  # Replace 'Points' with the actual column name in ScoringData
 n_iterations = 1000
 bootstrap_stds = [np.std(np.random.choice(score_values, size=len(score_values), replace=True)) for _ in range(n_iterations)]
 league_std = np.mean(bootstrap_stds)
