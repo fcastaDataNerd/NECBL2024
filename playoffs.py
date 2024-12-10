@@ -137,7 +137,7 @@ def simulate_season(playoff_teams, toilet_bowl_teams, playoffs, std_dev, n_simul
 
 # Define league-wide standard deviation
 score_values = scoring_data['Points']  # Replace 'Points' with the actual column name in ScoringData
-n_iterations = 1000
+n_iterations = 10000
 bootstrap_stds = [np.std(np.random.choice(score_values, size=len(score_values), replace=True)) for _ in range(n_iterations)]
 league_std = np.mean(bootstrap_stds)
 
