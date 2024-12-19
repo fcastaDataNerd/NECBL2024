@@ -11,10 +11,6 @@ playoffs = pd.read_excel("Fantasy.xlsx", sheet_name="Playoffs")
 
 # Streamlit App Title
 st.title("ROS Playoff Scenarios")
-st.header("Greetings, gentlemen. Discover your tanking scenarios below")
-print()
-print()
-print()
 
 
 
