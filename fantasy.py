@@ -11,7 +11,7 @@ playoffs = pd.read_excel("Fantasy.xlsx", sheet_name="Playoffs")
 
 # Streamlit App Title
 st.title("ROS Playoff Scenarios")
-st.write("Top 8 Teams Qualify")
+st.subheader("Top 8 Teams Qualify")
 
 
 # Initialize session state for updated records and finalized predictions
