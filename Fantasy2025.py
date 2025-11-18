@@ -9,7 +9,7 @@ import numpy as np
 st.title("2025 Fantasy Football — ROS Playoff Picture")
 st.subheader("Simulate Weeks 12–14 and View Updated Standings")
 
-DATA_PATH = r"C:\Users\franc\OneDrive\Documents\Fantasy25.xlsx"  # <-- Replace with your actual file name
+DATA_PATH = DATA_PATH = "Fantasy2025.xlsx"
 
 stats_df = pd.read_excel(DATA_PATH, sheet_name="Stats")
 schedule_df = pd.read_excel(DATA_PATH, sheet_name="Schedule")
